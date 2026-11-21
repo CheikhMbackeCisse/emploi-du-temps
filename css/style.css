@@ -3,7 +3,6 @@
   --edt-line: #e9e2d8;
   --edt-text: #2a251f;
   --edt-muted: #8b8279;
-  --edt-accent: #b8641c;
 
   --edt-cours-bg: #fcf0e1;
   --edt-cours-bd: #f1d9bb;
@@ -32,26 +31,6 @@ body {
 .edt-card {
   border: 1px solid var(--edt-line);
   border-radius: .75rem;
-}
-
-.btn-edt {
-  --bs-btn-color: var(--edt-text);
-  --bs-btn-bg: #fff;
-  --bs-btn-border-color: var(--edt-line);
-  --bs-btn-hover-color: var(--edt-text);
-  --bs-btn-hover-bg: #f4eee6;
-  --bs-btn-hover-border-color: var(--edt-line);
-  --bs-btn-active-color: var(--edt-text);
-  --bs-btn-active-bg: #ece4d9;
-  --bs-btn-active-border-color: var(--edt-line);
-  --bs-btn-focus-shadow-rgb: 184, 100, 28;
-  min-width: 2.25rem;
-}
-
-.btn-edt:disabled {
-  --bs-btn-disabled-color: var(--edt-muted);
-  --bs-btn-disabled-bg: #fff;
-  --bs-btn-disabled-border-color: var(--edt-line);
 }
 
 .edt-tag {
@@ -118,14 +97,6 @@ body {
   color: var(--edt-muted);
 }
 
-.edt-day.is-today .edt-dayname { color: var(--edt-accent); }
-.edt-day.is-today .edt-date {
-  background: var(--edt-accent);
-  color: #fff;
-  border-radius: 50rem;
-  padding: 0 .5rem;
-}
-
 .edt-axis,
 .edt-gap { display: none; }
 
@@ -135,8 +106,6 @@ body {
   margin-bottom: .75rem;
   overflow: hidden;
 }
-
-.edt-day.is-today { border-color: var(--edt-cours-bd); }
 
 .edt-head {
   display: flex;
@@ -172,9 +141,7 @@ body {
     margin: 0;
   }
 
-  .edt-day.is-today { background: #fdf9f4; }
-
-  .edt-head {
+    .edt-head {
     flex-direction: column;
     justify-content: center;
     gap: .125rem;
