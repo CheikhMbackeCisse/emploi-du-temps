@@ -1,0 +1,208 @@
+:root {
+  --edt-bg: #f6f3ee;
+  --edt-line: #e9e2d8;
+  --edt-text: #2a251f;
+  --edt-muted: #8b8279;
+  --edt-accent: #b8641c;
+
+  --edt-cours-bg: #fcf0e1;
+  --edt-cours-bd: #f1d9bb;
+  --edt-cours-fg: #b8641c;
+
+  --edt-autre-bg: #f1ede7;
+  --edt-autre-bd: #e2dbd0;
+  --edt-autre-fg: #766c61;
+
+  --edt-eval-bg: #fbe7e3;
+  --edt-eval-bd: #efc9c1;
+  --edt-eval-fg: #b03a2c;
+
+  /* hauteurs des lignes de la grille (desktop) */
+  --h-head: 3.5rem;
+  --h-am: 13rem;   /* 08h - 12h */
+  --h-gap: 2rem;   /* pause */
+  --h-pm: 13rem;   /* 15h - 19h */
+}
+
+body {
+  background: var(--edt-bg);
+  color: var(--edt-text);
+}
+
+.edt-card {
+  border: 1px solid var(--edt-line);
+  border-radius: .75rem;
+}
+
+.btn-edt {
+  --bs-btn-color: var(--edt-text);
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: var(--edt-line);
+  --bs-btn-hover-color: var(--edt-text);
+  --bs-btn-hover-bg: #f4eee6;
+  --bs-btn-hover-border-color: var(--edt-line);
+  --bs-btn-active-color: var(--edt-text);
+  --bs-btn-active-bg: #ece4d9;
+  --bs-btn-active-border-color: var(--edt-line);
+  --bs-btn-focus-shadow-rgb: 184, 100, 28;
+  min-width: 2.25rem;
+}
+
+.btn-edt:disabled {
+  --bs-btn-disabled-color: var(--edt-muted);
+  --bs-btn-disabled-bg: #fff;
+  --bs-btn-disabled-border-color: var(--edt-line);
+}
+
+.edt-tag {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .2rem .6rem;
+  border-radius: 50rem;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.cours { background: var(--edt-cours-bg); border-color: var(--edt-cours-bd); color: var(--edt-cours-fg); }
+.autre { background: var(--edt-autre-bg); border-color: var(--edt-autre-bd); color: var(--edt-autre-fg); }
+.eval  { background: var(--edt-eval-bg);  border-color: var(--edt-eval-bd);  color: var(--edt-eval-fg); }
+
+.edt-event {
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: .5rem;
+  padding: .625rem .75rem;
+}
+
+.edt-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .5rem;
+  margin-bottom: .25rem;
+}
+
+.edt-type {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.edt-time {
+  font-size: .75rem;
+  color: var(--edt-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.edt-title {
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--edt-text);
+  margin: 0;
+}
+
+.edt-dayname {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.edt-date {
+  font-size: .8125rem;
+  color: var(--edt-muted);
+}
+
+.edt-day.is-today .edt-dayname { color: var(--edt-accent); }
+.edt-day.is-today .edt-date {
+  background: var(--edt-accent);
+  color: #fff;
+  border-radius: 50rem;
+  padding: 0 .5rem;
+}
+
+.edt-axis,
+.edt-gap { display: none; }
+
+.edt-day {
+  border: 1px solid var(--edt-line);
+  border-radius: .5rem;
+  margin-bottom: .75rem;
+  overflow: hidden;
+}
+
+.edt-day.is-today { border-color: var(--edt-cours-bd); }
+
+.edt-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .625rem .875rem;
+  border-bottom: 1px solid var(--edt-line);
+}
+
+.edt-slot { padding: .5rem .5rem 0; }
+.edt-slot:last-child { padding-bottom: .5rem; }
+.edt-slot:empty { display: none; }
+
+@media (min-width: 992px) {
+  .edt {
+    display: grid;
+    grid-template-columns: 3.25rem repeat(6, minmax(0, 1fr));
+    border: 1px solid var(--edt-line);
+    border-radius: .5rem;
+    overflow: hidden;
+  }
+
+  .edt-axis,
+  .edt-day {
+    display: grid;
+    grid-template-rows: var(--h-head) var(--h-am) var(--h-gap) var(--h-pm);
+  }
+
+  .edt-day {
+    border: 0;
+    border-left: 1px solid var(--edt-line);
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .edt-day.is-today { background: #fdf9f4; }
+
+  .edt-head {
+    flex-direction: column;
+    justify-content: center;
+    gap: .125rem;
+    padding: 0;
+  }
+
+  .edt-slot,
+  .edt-slot:last-child { padding: .375rem; }
+  .edt-slot:empty { display: block; }
+
+  .edt-gap {
+    display: block;
+    background: #faf8f5;
+    border-top: 1px solid var(--edt-line);
+    border-bottom: 1px solid var(--edt-line);
+  }
+
+  .edt-band {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: .4rem .5rem;
+    font-size: .75rem;
+    color: var(--edt-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* l'heure est déjà dans la colonne de gauche */
+  .edt-time { display: none; }
+}
